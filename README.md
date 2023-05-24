@@ -1,16 +1,7 @@
 # meals_app
 
 A new Flutter project.
+Basic meals with instructions.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Meal_App_Demo.webm](https://github.com/minhkwan/meals-app/assets/80799884/67c73c06-25ce-44a4-a82c-14b745ac7ac5)
