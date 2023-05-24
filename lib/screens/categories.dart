@@ -4,8 +4,12 @@ import 'package:meals_app/models/category.dart';
 import 'package:meals_app/widgets/category_grid_item.dart';
 import 'package:meals_app/screens/meals.dart';
 
+import '../models/meal.dart';
+
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
+  const CategoriesScreen({super.key, required this.onToggleFavorite});
+
+  final void Function(Meal item) onToggleFavorite;
 
   void _onSelectCategory(BuildContext context, Category items) {
     final filteredMeals =
@@ -15,6 +19,7 @@ class CategoriesScreen extends StatelessWidget {
         builder: (ctx) => MealsScreen(
           title: items.title,
           mealList: filteredMeals,
+          onToggleFavorite: onToggleFavorite,
         ),
       ),
     );
@@ -22,28 +27,23 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pick your category'),
+    return GridView(
+      padding: const EdgeInsets.all(24),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 1.5,
+        mainAxisSpacing: 20,
+        crossAxisSpacing: 20,
       ),
-      body: GridView(
-        padding: const EdgeInsets.all(24),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 1.5,
-          mainAxisSpacing: 20,
-          crossAxisSpacing: 20,
-        ),
-        children: [
-          for (final category in availableCategories)
-            CategoryItem(
-              item: category,
-              onSelectCategory: () {
-                _onSelectCategory(context, category);
-              },
-            )
-        ],
-      ),
+      children: [
+        for (final category in availableCategories)
+          CategoryItem(
+            item: category,
+            onSelectCategory: () {
+              _onSelectCategory(context, category);
+            },
+          )
+      ],
     );
   }
 }
